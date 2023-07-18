@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="text-center">Your Blogs</h1>
+<div class="container-fluid row ps-3">
+    {% if blogs|length==0 %}
+    <div class="alert alert-danger text-center" role="alert">
+        <a href="/" class="link-danger link-underline-opacity-0">No Blogs's found. Add your first Blog now!</a>
+    </div>
+    {% else %}
+    {% for blog in blogs %}
+    <div class="card mt-3 col-3 m-3 p-0" style="width: 18rem;">
+        {% if blog.image=="Null" %}
+        <img class="card-img-top w-100 m-0 p-0" src="{{url_for('static',filename='noimg.png')}}" alt="Card image cap">
+        {% else %}
+        <img class="card-img-top" src="{{url_for('static',filename=blog.image)}}" alt="Card image cap">
+        {% endif %}
+
+        <div class="card-body">
+            <h6 class="card-title justify-content-evenly">{{blog.title}}</h6>
+            <div class="content">
+                <p class="card-text">{{blog.content}}</p>
+            </div>
+            <div class="row mt-1">
+                <a href="/update/{{blog.sno}}" class="btn btn-primary col-5 ms-2">Update</a>
+                <a href="/blog/delete/{{blog.sno}}" class="btn btn-danger col-5 ms-4">Delete</a>
+
+            </div>
+            <div class="row mt-2">
+                <a href="/blog/view/{{blog.sno}}" class="btn btn-info col-12">View</a>
+            </div>
+        </div>
+    </div>
+
+
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock body %}

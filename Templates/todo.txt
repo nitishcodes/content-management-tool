@@ -1,0 +1,7 @@
+make all the images the same size in the page where all the bogs are seen
+
+styling of the individual blog viewing page(view.html)
+
+and the index.html page see that more content can be posted
+
+add date created at the end

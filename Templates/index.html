@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid">
+    <h1 class="text-center">Create a New Blog Post</h1>
+    <form id="post-form" action="/" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" class="form-control" rows="15" style="white-space: pre-wrap;"
+                required></textarea>
+        </div>
+        <div class="form-group mt-3">
+            <label for="image">Images:</label>
+            <input type="file" id="image" name="image" class="form-control-file">
+        </div>
+        <div class="form-group mt-3">
+            <label for="video">Videos:</label>
+            <input type="file" id="video" name="video" class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4">Submit</button>
+    </form>
+    {% if upload==True %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </svg>
+        <strong>Success!</strong> Blog Created Successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% if upload==False %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">Blog Creation Failed!</h4>
+        <p>Please check the file format before submitting</p>
+        <hr>
+        <p class="mb-0">Image Extensions Allowed are:
+            'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp','tiff', 'ico', 'jfif', 'pjpeg', 'pjp'
+        </p>
+        <p>
+            Video Extensions Allowed are:
+            'mp4', 'avi', 'mkv', 'mov', 'wmv', 'flv', 'webm', 'mpeg', 'mpg', '3gp', 'm4v', 'f4v', 'ogg', 'qt', 'swf',
+            'vob',
+            'rm', 'rmvb', 'm2v', 'mxf', 'mp2', 'mpg2', 'mpeg2', 'mpe', 'mpv', 'mpg4', 'divx','dvd', 'asf', 'asx', 'ts',
+            'mts'
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+
+
+</div>
+
+
+{% endblock body %}
